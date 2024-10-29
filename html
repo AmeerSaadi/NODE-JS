@@ -160,3 +160,21 @@ function addVisit() {
             })
             .catch(error => console.error('Error:', error));
         }
+function fetchVisits() {
+            fetch('/visits')
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById('visitList');
+                list.innerHTML = '';
+                data.forEach(visit => {
+                    const item = document.createElement('li');
+                    item.textContent = `ID: ${visit.id}, Checkpoint ID: ${visit.checkpointId}, Visit Time: ${new Date(visit.visitedAt).toLocaleString()}`;
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.onclick = () => deleteVisit(visit.id);
+                    item.appendChild(deleteButton);
+                    list.appendChild(item);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        }
