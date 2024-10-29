@@ -31,3 +31,15 @@ app.post('/addVisit', (req, res) => {
 app.get('/visits', (req, res) => {
     res.status(200).json(visits);
 });
+app.delete('/deleteCheckpoint/:id', (req, res) => {
+    const checkpointId = parseInt(req.params.id);
+    console.log("Current checkpoints:", checkpoints);
+    checkpoints = checkpoints.filter(cp => cp.id !== checkpointId);
+    res.status(200).json("Checkpoint deleted successfully");
+});
+
+app.delete('/deleteVisit/:id', (req, res) => {
+    const visitId = parseInt(req.params.id);
+    visits = visits.filter(v => v.id !== visitId);
+    res.status(200).json("Visit deleted successfully");
+});
