@@ -79,3 +79,30 @@
     </style>
 </head>
 <body>
+
+    <h1>Checkpoint Management and Visit Registration System</h1>
+
+    <div class="container">
+        <h2>Add Checkpoint</h2>
+        <input type="text" id="checkpointName" placeholder="Checkpoint Name">
+        <input type="text" id="checkpointLocation" placeholder="Location">
+        <button onclick="addCheckpoint()">Add Checkpoint</button>
+    </div>
+
+    <div class="container">
+        <h2>View Checkpoints</h2>
+        <button onclick="fetchCheckpoints()">Show Checkpoints</button>
+        <ul id="checkpointList"></ul>
+    </div>
+
+    <div class="container">
+        <h2>Register Visit</h2>
+        <input type="text" id="checkpointId" placeholder="Checkpoint ID">
+        <button onclick="addVisit()">Register Visit</button>
+    </div>
+
+    <div class="container">
+        <h2>View Visits</h2>
+        <button onclick="fetchVisits()">Show Visits</button>
+        <ul id="visitList"></ul>
+    </div>
