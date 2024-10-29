@@ -190,3 +190,18 @@ function fetchVisits() {
             })
             .catch(error => console.error('Error:', error));
         }
+ function deleteVisit(id) {
+            fetch(`/deleteVisit/${id}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || data.error);
+                fetchVisits();
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+
+</body>
+</html>
