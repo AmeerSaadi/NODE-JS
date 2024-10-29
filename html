@@ -178,3 +178,15 @@ function fetchVisits() {
             })
             .catch(error => console.error('Error:', error));
         }
+ function deleteCheckpoint(id) {
+            console.log(`Deleting checkpoint with ID: ${id}`);
+            fetch(`/deleteCheckpoint/${id}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || data.error);
+                fetchCheckpoints();
+            })
+            .catch(error => console.error('Error:', error));
+        }
