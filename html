@@ -125,3 +125,21 @@
             })
             .catch(error => console.error('Error:', error));
         }
+function fetchCheckpoints() {
+            fetch('/checkpoints')
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById('checkpointList');
+                list.innerHTML = '';
+                data.forEach(checkpoint => {
+                    const item = document.createElement('li');
+                    item.textContent = `ID: ${checkpoint.id}, Name: ${checkpoint.name}, Location: ${checkpoint.location}`;
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.onclick = () => deleteCheckpoint(checkpoint.id);
+                    item.appendChild(deleteButton);
+                    list.appendChild(item);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        }
