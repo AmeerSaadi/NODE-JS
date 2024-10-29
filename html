@@ -106,3 +106,22 @@
         <button onclick="fetchVisits()">Show Visits</button>
         <ul id="visitList"></ul>
     </div>
+ <script>
+        function addCheckpoint() {
+            const name = document.getElementById('checkpointName').value;
+            const location = document.getElementById('checkpointLocation').value;
+
+            fetch('/addCheckpoint', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, location })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data);
+                fetchCheckpoints();
+            })
+            .catch(error => console.error('Error:', error));
+        }
