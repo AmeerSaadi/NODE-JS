@@ -43,3 +43,10 @@ app.delete('/deleteVisit/:id', (req, res) => {
     visits = visits.filter(v => v.id !== visitId);
     res.status(200).json("Visit deleted successfully");
 });
+app.get('/', (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, "/index.html"));
+});
+
+app.listen(port, () => {
+    console.log(`Now listening on port http://localhost:${port}`);
+});
